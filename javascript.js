@@ -195,29 +195,47 @@ const jar = document.querySelector("#jar")
 const container = document.querySelector("#container");
 const containerBtn = document.querySelector("#containerBtn");
 const button = document.querySelector("#btn");
-const popUpBtn = document.createElement("button")
-containerBtn.appendChild(popUpBtn)
+
+const popUpBtn = document.createElement("button");
+popUpBtn.classList.add("custom")
+containerBtn.appendChild(popUpBtn);
 popUpBtn.textContent = "pick Number of sqaures!"
 
+let userNum = 1;
 let hover = false
 let erase = false
-let userNum = +prompt("input any number from 1 to 100")
 
 popUpBtn.addEventListener("click", () => {
-    userNum = +prompt("input any number from 1 to 100")
+
+    let selection = "input any number from 1 to 100";
+    
+    while (true) {
+
+        userNum = +prompt(selection)
+        if (userNum <= 100 && userNum > 0)
+            break;
+
+        selection = "thats not a valid number!"
+    }
 })
 
 
 
 const eraseBtn = document.createElement("button");
-eraseBtn.textContent = "erase"
+eraseBtn.classList.add("custom")
+eraseBtn.textContent = "Eraser"
 containerBtn.appendChild(eraseBtn)
 
 eraseBtn.addEventListener("click", () => {
     erase = !erase
+    console.log(userNum)
 })
 
+
+
+
 const clickBtn = document.createElement("button");
+clickBtn.classList.add("custom")
 clickBtn.addEventListener("click", () => {
     hover = !hover
     console.log(hover)
@@ -267,7 +285,13 @@ function createGrid () {
 }
 
 button.addEventListener("click", () => {
-    
+    function deleteBoard(parent) {
+        while (parent.firstChild) {
+            parent.removeChild(parent.firstChild)
+        }
+    }
+
+    deleteBoard(jar)
     createGrid()
 })
 
