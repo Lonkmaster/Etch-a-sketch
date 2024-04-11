@@ -1,12 +1,33 @@
 body {
-    
+    width: 100vw;
+    height: 100vh;
+}
+
+
+body {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    background-color: rgb(82, 82, 82);
+    background-image: linear-gradient(rgb(17, 17, 17),rgb(82, 82, 82));
     margin: 0;
     padding: 0;
+}
+
+.headerColor {
+    color: white;
+}
+
+.buttonColor {
+    color: white;
+    background-color: rgb(58, 58, 58);
+    gap: 5px;
+    padding: 10px;
+    border-radius: 5px;
 }
 
 .bottomFlex {
     display: flex;
     justify-content: center;
+    color: white;
     font-size: 20px;
     font-weight: bold;
     padding-top: 20px;
@@ -23,7 +44,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-top: 30px
+    padding-top: 10px
 }
 
 .custom {
@@ -32,7 +53,17 @@ body {
     gap: 5px;
     padding: 10px;
     border-radius: 5px;
+}
 
+.combineColor {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-bottom: 5px;
 }
 
 #jar {
@@ -45,12 +76,12 @@ body {
 
 #container {
     display: flex;
-    border: 10px solid red;
+    background-color: white;
+    border: 20px solid rgb(58, 58, 58);
     display:inline-block;
     vertical-align: top;
     border-radius: 10px;
 }
-
 
 
 

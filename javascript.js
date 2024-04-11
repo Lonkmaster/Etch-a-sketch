@@ -1,209 +1,20 @@
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const jar = document.querySelector("#jar")
 const container = document.querySelector("#container");
 const containerBtn = document.querySelector("#containerBtn");
 const button = document.querySelector("#btn");
+const displayInfo = document.querySelector("#displayName")
 
 const popUpBtn = document.createElement("button");
-popUpBtn.classList.add("custom")
+popUpBtn.classList.add("buttonColor")
 containerBtn.appendChild(popUpBtn);
 popUpBtn.textContent = "pick Number of sqaures!"
 
+let num;
 let userNum = 1;
 let hover = false
 let erase = false
+let randomColor = false
 
 popUpBtn.addEventListener("click", () => {
 
@@ -219,39 +30,63 @@ popUpBtn.addEventListener("click", () => {
     }
 })
 
+function getRandomColor() {
+    let letters = "0123456789ABCDEF";
+    let color = "#";
+    for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)]
+    }
+    return color;
+}
 
 
 const eraseBtn = document.createElement("button");
-eraseBtn.classList.add("custom")
+eraseBtn.classList.add("buttonColor")
 eraseBtn.textContent = "Eraser"
 containerBtn.appendChild(eraseBtn)
 
 eraseBtn.addEventListener("click", () => {
     erase = !erase
+    if (erase == true) {
+        displayInfo.textContent = "erase is on"
+    }
+    if (erase == false ) {
+        displayInfo.textContent = "erase is off"
+    }
     console.log(userNum)
 })
 
+const rainbow = document.createElement("button");
+rainbow.classList.add("buttonColor");
+rainbow.textContent = "Random Color!";
+containerBtn.appendChild(rainbow);
+rainbow.addEventListener("click", () => {
+    randomColor = !randomColor
+    num = 0
+    console.log(num)
+    console.log(randomColor)
+})
 
 
 
 const clickBtn = document.createElement("button");
-clickBtn.classList.add("custom")
+clickBtn.classList.add("buttonColor")
 clickBtn.addEventListener("click", () => {
     hover = !hover
+    num = 1
     console.log(hover)
     /*if (hover == false ) {
         hover = true;
     }
-    if (hover == true) {
+    else if (hover == true) {
         hover = false;
     }*/
 })
-clickBtn.textContent = "Hover or Click drawing"
+clickBtn.textContent = "Click or Hover drawing"
 containerBtn.appendChild(clickBtn);
 
 
 function createGrid () {
-
     let size = (1 / userNum) * 100;
     for (let i = 0; i < userNum; i++) {
         for(let j = 0; j < userNum; j++) {
@@ -268,15 +103,19 @@ function createGrid () {
                     div.style.backgroundColor = "#ffffff"
             })
 
-            div.addEventListener("click", () => {
+            div.addEventListener("mousedown", () => {
                 if (hover == false && erase == false)
                     div.style.backgroundColor ="#000000"
                 
             })
             div.addEventListener("mouseover", () => {
-                if (hover == true && erase == false)
+                if (hover == true && erase == false )
                     div.style.backgroundColor ="#000000"
                 
+            })
+            div.addEventListener("mouseover", () => {
+                if (randomColor == true && erase == false && num == 0)
+                   div.style.backgroundColor = getRandomColor();
             })
         }
           //let jump = document.createElement("br");
