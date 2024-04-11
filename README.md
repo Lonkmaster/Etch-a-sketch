@@ -1,3 +1,3 @@
 # Etch-a-sketch
-this is a website for a etch-a-sketch
-this is an odin project, project.
+This is a project website designed by the Odin team
+this is my version of the Etch-a-sketch
